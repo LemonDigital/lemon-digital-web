@@ -269,16 +269,15 @@ footer{background:#060e0c}
   <div class="absolute bottom-0 left-0 right-0 z-0" style="height:180px;background:linear-gradient(to bottom,transparent,#000)"></div>
 
   <!-- NAVBAR -->
-  <nav id="nav" class="fixed top-4 left-0 right-0 z-50 px-8 lg:px-16 flex items-center justify-between">
+<nav id="nav"
+class="fixed top-4 left-0 right-0 z-50 px-8 lg:px-16 flex items-center justify-between"
+style="transition:all .35s cubic-bezier(.22,1,.36,1);">
     <!-- LOGO: para cambiar el logo, reemplazá el bloque .logo-mark + .logo-text por:
          SVG inline: pegar el código SVG directamente
          PNG: <img src="logo.png" alt="Lemon Digital" style="height:36px;width:auto">
          Formato recomendado: SVG o PNG con fondo transparente, ~160x40px horizontal -->
     <a href="#inicio" class="flex items-center gap-3 no-underline">
-      <div class="liquid-glass flex items-center justify-center" style="width:48px;height:48px;border-radius:14px;background:rgba(20,116,111,.3)">
-        <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM17 13v8M13 17h8" stroke="#AACC00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <span class="font-body font-bold text-white" style="font-size:17px;letter-spacing:-.03em">LEMON<span style="color:#AACC00">DIGITAL</span></span>
+<img src="logo.png" alt="Lemon Digital" style="height:40px;width:auto;display:block">
     </a>
     <!-- Center links -->
     <div class="nav-links-desktop liquid-glass flex items-center gap-1 px-2 py-2" style="border-radius:99px">
@@ -733,7 +732,7 @@ footer{background:#060e0c}
       <h2 class="font-heading italic text-white" style="font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;line-height:1;letter-spacing:-.04em;margin-bottom:12px">Agro<span style="color:#AACC00">Lemon</span></h2>
       <p class="font-body font-light" style="font-size:1rem;color:rgba(255,255,255,.45);max-width:560px;line-height:1.72">El cerebro operativo del estudio contable agro. Un concentrador inteligente de información fiscal y operativa que convierte datos en acciones concretas — pensado para que el contador controle, no persiga problemas.</p>
     </div>
-    <a href="https://app.agrolemon.com.ar" target="_blank"
+    <a href="https://agrolemon-web.vercel.app/login" target="_blank"
        style="flex-shrink:0;background:#AACC00;color:#0F1410;padding:14px 32px;border-radius:99px;font-family:'Barlow',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .28s;box-shadow:0 4px 24px rgba(170,204,0,.28)">
       Ir a AgroLemon
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -881,11 +880,11 @@ footer{background:#060e0c}
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:24px 24px 20px">
         <div class="font-mono" style="font-size:9px;color:rgba(170,204,0,.65);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px">Alertas y control</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Alertas por nuevas LPG</span>
-          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Inconsistencias detectadas</span>
-          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Próximos vencimientos</span>
+          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Alertas de próximas tareas por cliente</span>
+          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Reportes de estado fiscal por cliente</span>
+          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Próximos vencimientos asociados a ARCA</span>
           <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Estados: nuevo / revisado / pendiente</span>
-          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Errores operativos</span>
+          <span class="font-body" style="font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:99px">Alertas de estado fiscal por cliente</span>
           <span class="font-body" style="font-size:11px;color:rgba(170,204,0,.7);background:rgba(170,204,0,.06);border:1px solid rgba(170,204,0,.15);padding:5px 12px;border-radius:99px">IA contable incorporada</span>
         </div>
       </div>
@@ -902,8 +901,8 @@ footer{background:#060e0c}
           <span class="font-mono" style="font-size:10px;color:#AACC00;letter-spacing:.1em;text-transform:uppercase">En desarrollo · Early Access</span>
         </div>
 
-        <h4 class="font-body font-semibold text-white" style="font-size:1rem;margin-bottom:4px">Sumate a la lista de interés</h4>
-        <p class="font-body font-light" style="font-size:.82rem;color:rgba(255,255,255,.38);margin-bottom:14px;line-height:1.5">Sé de los primeros en acceder cuando AgroLemon esté disponible.</p>
+        <h4 class="font-body font-semibold text-white" style="font-size:1rem;margin-bottom:4px">¡Sumate a la lista de interés para utilizar nuestra primer versión y MVP completamente GRATIS!.</h4>
+        <p class="font-body font-light" style="font-size:.82rem;color:rgba(255,255,255,.38);margin-bottom:14px;line-height:1.5">Si sos el elegido,luego, tendrás el plan básico gratis por un año.</p>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
           <input class="form-input" id="agro-nombre" name="entry.154562348" type="text" placeholder="Nombre *" required>
@@ -934,7 +933,7 @@ footer{background:#060e0c}
         </div>
 
         <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:12px">
-          <textarea class="form-input" id="agro-problema" name="entry.279136285" rows="3" placeholder="¿Cuál es tu principal problema hoy en la gestión agro?"></textarea>
+          <textarea class="form-input" id="agro-problema" name="entry.279136285" rows="3" placeholder="¿Que proceso o tarea diaria te gustaria dejar de hacer manualmente en la gestión agro?"></textarea>
           <textarea class="form-input" id="agro-una-cosa" name="entry.928115466" rows="3" placeholder="Si AgroLemon pudiera resolver una sola cosa para vos, ¿qué sería?"></textarea>
         </div>
 
@@ -1105,9 +1104,27 @@ window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document
 
 // ── NAV scroll style
 window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('nav');
-  if(window.scrollY>80){nav.style.background='rgba(0,0,0,.85)';nav.style.backdropFilter='blur(24px)'}
-  else{nav.style.background='';nav.style.backdropFilter=''}
+
+const nav=document.getElementById('nav');
+
+if(window.scrollY > 80){
+
+    nav.style.background='rgba(15,20,16,.18)';
+    nav.style.backdropFilter='blur(40px)';
+    nav.style.webkitBackdropFilter='blur(40px)';
+    nav.style.border='1px solid rgba(255,255,255,.08)';
+    nav.style.boxShadow='0 8px 32px rgba(0,0,0,.12)';
+
+}else{
+
+    nav.style.background='';
+    nav.style.backdropFilter='';
+    nav.style.webkitBackdropFilter='';
+    nav.style.border='';
+    nav.style.boxShadow='';
+
+}
+
 },{passive:true});
 
 // ── FADING VIDEO
