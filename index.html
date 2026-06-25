@@ -271,7 +271,7 @@ footer{background:#060e0c}
   <!-- NAVBAR -->
 <nav id="nav"
 class="fixed top-4 left-0 right-0 z-50 px-8 lg:px-16 flex items-center justify-between"
-style="transition:all .35s cubic-bezier(.22,1,.36,1);">
+style="transition:all .35s cubic-bezier(.22,1,.36,1);background:transparent;border:none;box-shadow:none;">
     <!-- LOGO: para cambiar el logo, reemplazá el bloque .logo-mark + .logo-text por:
          SVG inline: pegar el código SVG directamente
          PNG: <img src="logo.png" alt="Lemon Digital" style="height:36px;width:auto">
@@ -286,14 +286,15 @@ style="transition:all .35s cubic-bezier(.22,1,.36,1);">
      ">
 </a>
     <!-- Center links -->
-    <div class="nav-links-desktop liquid-glass-strong flex items-center gap-1 px-2 py-2" style="border-radius:99px;background:rgba(15,20,16,.25);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);box-shadow:0 8px 32px rgba(0,0,0,.12), inset 0 1px 1px rgba(255,255,255,.12);">
+    <div class="nav-links-desktop liquid-glass-strong flex items-center gap-1 px-4 py-3"
+style="border-radius:99px;background:rgba(80,85,78,.55);backdrop-filter:blur(42px);-webkit-backdrop-filter:blur(42px);box-shadow:0 12px 36px rgba(0,0,0,.18), inset 0 1px 1px rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.22);">
       <a href="#inicio" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Inicio</a>
       <a href="#diferencial" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Diferencial</a>
       <a href="#problema" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Por qué</a>
       <a href="#servicios" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Servicios</a>
       <a href="#metodo" class="font-body text-sm font-semibold px-3 py-2 rounded-full transition-all no-underline" style="color:#AACC00">Método LEMON</a>
       <a href="#paquetes" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Paquetes</a>
-      <a href="#agrolemon" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">AgroLemon</a>
+      <a href="#agrolemon" class="font-body text-sm font-semibold px-3 py-2 rounded-full transition-all no-underline"style="color:#AACC00">AgroLemon</a>      
       <a href="#nosotros" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Nosotros</a>
       <a href="#contacto" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Contacto</a>
     </div>
@@ -723,10 +724,10 @@ style="transition:all .35s cubic-bezier(.22,1,.36,1);">
 <section id="agrolemon" style="padding:104px 8%;background:#0d2b1e;color:#fff;position:relative;overflow:hidden">
   <!-- video maquina cosechadora como bg sutil -->
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
-    <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;opacity:.18">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260422_191657_800d4e1f-7ab3-41af-90b6-9bd3039eb294.mp4" type="video/mp4">
-      <source src="maquinacosechadora.mov" type="video/quicktime">
-    </video>
+<video autoplay muted loop playsinline preload="auto"
+style="width:100%;height:100%;object-fit:cover;opacity:.28">
+  <source src="maquinacosechadora.mp4" type="video/mp4">
+</video>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,43,30,.88) 0%,rgba(13,43,30,.72) 60%,rgba(13,43,30,.92) 100%)"></div>
   </div>
   <div style="position:relative;z-index:1">
@@ -1201,8 +1202,12 @@ window.addEventListener('scroll',()=>{
   secs.forEach(s=>{if(window.scrollY>=s.offsetTop-160)c=s.id});
   document.querySelectorAll('#nav a[href^="#"]').forEach(a=>{
     a.style.background='';
-    const isMetodo = a.getAttribute('href')==='#metodo';
-    if(isMetodo){a.style.color='#AACC00';}
+const isMetodo = a.getAttribute('href')==='#metodo';
+const isAgro = a.getAttribute('href')==='#agrolemon';
+
+if(isMetodo || isAgro){
+  a.style.color='#AACC00';
+}
     else if(a.getAttribute('href')==='#'+c){a.style.color='#AACC00';}
     else{a.style.color='';}
   })
