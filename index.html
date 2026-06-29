@@ -113,6 +113,12 @@ a.lemon-link:hover { border-bottom-color:#AACC00 }
 
 /* ─── SECTIONS LIGHT ─── */
 .section-light { background:#EEF2E4;color:#0F1410 }
+
+/* ─── NAV: links permanentes con color fijo ─── */
+#nav a[href="#metodo"]  { color:#AACC00 !important }
+#nav a[href="#agrolemon"] { color:#55A630 !important }
+#nav a[href="#metodo"]:hover,
+#nav a[href="#agrolemon"]:hover { opacity:.8 }
 .section-dark { background:#0a0f0e;color:#fff }
 .section-teal { background:#14746F;color:#fff }
 .section-mid { background:#111a17;color:#fff }
@@ -293,7 +299,7 @@ style="transition:all .35s cubic-bezier(.22,1,.36,1);">
       <a href="#servicios" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Servicios</a>
       <a href="#metodo" class="font-body text-sm font-semibold px-3 py-2 rounded-full transition-all no-underline" style="color:#AACC00">Método LEMON</a>
       <a href="#paquetes" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Paquetes</a>
-      <a href="#agrolemon" class="font-body text-sm font-semibold px-3 py-2 rounded-full transition-all no-underline" style="color:#55A630">AgroLemon</a>      
+      <a href="#agrolemon" class="font-body text-sm font-semibold px-3 py-2 rounded-full transition-all no-underline" style="color:#55A630">AgroLemon</a>
       <a href="#nosotros" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Nosotros</a>
       <a href="#contacto" class="font-body text-white/80 text-sm font-medium px-3 py-2 rounded-full hover:text-white hover:bg-white/10 transition-all no-underline">Contacto</a>
     </div>
@@ -723,11 +729,14 @@ style="transition:all .35s cubic-bezier(.22,1,.36,1);">
 <section id="agrolemon" style="padding:104px 8%;background:#0d2b1e;color:#fff;position:relative;overflow:hidden">
   <!-- video maquina cosechadora como bg sutil -->
   <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
-    <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;opacity:.22">
+    <video autoplay muted loop playsinline
+           style="width:100%;height:100%;object-fit:cover;opacity:.35"
+           onerror="this.style.opacity='0'">
+      <source src="maquinacosechadora.mp4" type="video/mp4">
       <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260422_191657_800d4e1f-7ab3-41af-90b6-9bd3039eb294.mp4" type="video/mp4">
       <source src="maquinacosechadora.mov" type="video/quicktime">
     </video>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,43,30,.80) 0%,rgba(13,43,30,.60) 60%,rgba(13,43,30,.92) 100%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,43,30,.72) 0%,rgba(13,43,30,.50) 50%,rgba(13,43,30,.78) 100%)"></div>
   </div>
   <div style="position:relative;z-index:1">
 
@@ -1108,17 +1117,28 @@ document.querySelectorAll('a,button').forEach(el=>{
 const prog=document.getElementById('scroll-prog');
 window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
 
-// ── NAV scroll style
+// ── NAV scroll style — glass adaptativo
+const NAV_DARK_SECTIONS = ['inicio','agrolemon','contacto'];
 window.addEventListener('scroll',()=>{
-
-const nav=document.getElementById('nav');
-
-nav.style.background='transparent';
-nav.style.backdropFilter='none';
-nav.style.webkitBackdropFilter='none';
-nav.style.border='none';
-nav.style.boxShadow='none';
-
+  const nav = document.getElementById('nav');
+  let currentSection = 'inicio';
+  document.querySelectorAll('section[id]').forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 120) currentSection = s.id;
+  });
+  const isDark = NAV_DARK_SECTIONS.includes(currentSection) || window.scrollY < 80;
+  if(isDark){
+    nav.style.background = '';
+    nav.style.backdropFilter = '';
+    nav.style.webkitBackdropFilter = '';
+    nav.style.boxShadow = '';
+    nav.classList.remove('nav-light');
+  } else {
+    nav.style.background = 'rgba(238,242,228,.92)';
+    nav.style.backdropFilter = 'blur(20px)';
+    nav.style.webkitBackdropFilter = 'blur(20px)';
+    nav.style.boxShadow = '0 2px 24px rgba(0,0,0,.07)';
+    nav.classList.add('nav-light');
+  }
 },{passive:true});
 
 // ── FADING VIDEO
@@ -1201,10 +1221,13 @@ window.addEventListener('scroll',()=>{
   secs.forEach(s=>{if(window.scrollY>=s.offsetTop-160)c=s.id});
   document.querySelectorAll('#nav a[href^="#"]').forEach(a=>{
     a.style.background='';
-    const isMetodo = a.getAttribute('href')==='#metodo';
-    if(isMetodo){a.style.color='#AACC00';}
-    else if(a.getAttribute('href')==='#'+c){a.style.color='#AACC00';}
-    else{a.style.color='';}
+    const href = a.getAttribute('href');
+    // Método LEMON y AgroLemon: color fijo siempre (CSS !important también lo protege)
+    if(href==='#metodo')   { a.style.setProperty('color','#AACC00','important'); return; }
+    if(href==='#agrolemon'){ a.style.setProperty('color','#55A630','important'); return; }
+    // Sección activa: lime highlight
+    if(href==='#'+c){ a.style.color='#AACC00'; }
+    else { a.style.color=''; }
   })
 },{passive:true});
 
